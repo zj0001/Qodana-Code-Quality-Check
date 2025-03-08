@@ -1,0 +1,19 @@
+name: Qodana Code Quality Check
+
+on:
+  push:
+分支:
+      - main
+  pull_request:
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Qodana
+        uses: JetBrains/qodana-action@v2023.1
+        with:
+          args: --save-report
